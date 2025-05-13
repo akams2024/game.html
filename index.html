@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Akam Domena</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: url('https://i.imgur.com/zUdxXrK.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      margin: 100px auto;
+      border-radius: 20px;
+      width: 300px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+    #game {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Akam Domena</h1>
+    <input type="text" id="playerName" placeholder="ناوی یاریزان">
+    <div>
+      <input type="text" id="roomCode" placeholder="کۆدی ڕووم">
+      <button onclick="createRoom()">درووستکردنی ڕووم</button>
+      <button onclick="joinRoom()">جۆین بۆ ڕووم</button>
+    </div>
+    <div id="game">
+      <h2>بەخێربێیت، <span id="displayName"></span></h2>
+      <p>ڕووم: <span id="displayRoom"></span></p>
+      <p>ئێرە شوێنی یاریە</p>
+    </div>
+  </div>
+
+  <script>
+    function createRoom() {
+      const name = document.getElementById("playerName").value.trim();
+      const room = Math.random().toString(36).substring(2, 7).toUpperCase();
+      if (name === "") return alert("تکایە ناوی خۆت بنوسە");
+      document.getElementById("displayName").innerText = name;
+      document.getElementById("displayRoom").innerText = room;
+      document.getElementById("game").style.display = "block";
+    }
+
+    function joinRoom() {
+      const name = document.getElementById("playerName").value.trim();
+      const room = document.getElementById("roomCode").value.trim().toUpperCase();
+      if (name === "" || room === "") return alert("تکایە هەردو ناو و کۆد داخڵ بکە");
+      document.getElementById("displayName").innerText = name;
+      document.getElementById("displayRoom").innerText = room;
+      document.getElementById("game").style.display = "block";
+    }
+  </script>
+</body>
+</html>
